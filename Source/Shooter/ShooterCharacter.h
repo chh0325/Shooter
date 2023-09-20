@@ -70,7 +70,17 @@ protected:
 	// 如果有重叠的Item，就进行检测
 	void TraceForItems();
 
-	void SpawnDefaultWeapon();
+	// 生成默认武器并装备
+	class AWeapon* SpawnDefaultWeapon();
+
+	// 捡起武器并装备
+	void EquipWeapon(AWeapon* WeaponToEquip);
+
+	// 扔掉武器
+	void DropWeapon();
+
+	void SelectButtonPressed();
+	void SelectButtonReleased();
 
 public:	
 	// Called every frame
@@ -208,7 +218,7 @@ private:
 
 	// 当前装备的武器
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = Combat, meta = (AllowPrivateAccess = "true"))
-	class AWeapon* EquippedWeapon;
+	AWeapon* EquippedWeapon;
 
 	// 默认初始装备
 	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly, Category = Combat, meta = (AllowPrivateAccess = "true"))
