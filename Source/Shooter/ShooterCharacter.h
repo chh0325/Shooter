@@ -82,6 +82,9 @@ protected:
 	void SelectButtonPressed();
 	void SelectButtonReleased();
 
+	// 交换武器，扔掉当前武器，装备射线检测命中的武器
+	void SwapWeapon(AWeapon* WeaponToSwap);
+
 public:	
 	// Called every frame
 	virtual void Tick(float DeltaTime) override;
@@ -223,6 +226,10 @@ private:
 	// 默认初始装备
 	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly, Category = Combat, meta = (AllowPrivateAccess = "true"))
 	TSubclassOf<AWeapon> DefaultWeaponClass;
+
+	// 射线检测当前追踪到的物体（可能为空）
+	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = Combat, meta = (AllowPrivateAccess = "true"))
+	AItem* TraceHitItem;
 
 public:
 	// 返回CameraBoom组件
